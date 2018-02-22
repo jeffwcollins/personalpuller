@@ -11,7 +11,7 @@ if [ ! -d "data" ]; then
 fi
  
 #for i in {0..10}
-for i in {1..4}
+for i in {1..8}
 do
     j=$((i+1))
     socks_port=$((base_socks_port+i))
