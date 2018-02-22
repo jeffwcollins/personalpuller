@@ -22,7 +22,7 @@ do
 	mkdir -p $LOGDIR
 	echo "forward-socks5t   /               127.0.0.1:$SOCKS_PORT ." > $CONF
 	echo "logdir $LOGDIR" >> $CONF
-	echo "listen-address  localhost:$LISTEN_PORT" >> $CONF
+	echo "listen-address  127.0.0.1:$LISTEN_PORT" >> $CONF
 	cat $ETCDIR/privoxy.config.default >> $CONF
 
 cat << EOF > $SERVICE_FILE
