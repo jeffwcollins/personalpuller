@@ -1,2 +1,6 @@
 *.tar.gz
+*.pyc
+/init/data/
+/var/
+/venv/
 etc/private
