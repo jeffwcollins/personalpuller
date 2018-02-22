@@ -1,13 +1,16 @@
 #!/bin/bash
 DIR=$( cd "$(dirname "$0")" ; pwd -P )
 BASEDIR=$DIR/..
-DELEGATED=/home/scraper/delegate9.9.13/src/delegated
 base_socks_port=9050
 base_http_port=3128 # leave 3128 for HAProxy
 base_control_port=8119
 # Create data directory if it doesn't exist
 if [ ! -d "data" ]; then
     mkdir "data"
+fi
+
+if [ ! -d "$BASEDIR/var" ]; then
+    mkdir "$BASEDIR/var"
 fi
  
 #for i in {0..10}
@@ -23,13 +26,10 @@ do
     fi
     # Take into account that authentication for the control port is disabled. Must be used in secure and controlled environments
  
-    echo "Running: tor --RunAsDaemon 1  --PidFile tor$i.pid --SocksPort $socks_port --DataDirectory $BASEDIR/var/tor$1"
+    echo "Running: tor --RunAsDaemon 1  --PidFile $BASEDIR/var/tor$i/tor$i.pid --SocksPort $socks_port --DataDirectory $BASEDIR/var/tor$1"
  
-    tor --RunAsDaemon 1  --PidFile tor$i.pid --SocksPort $socks_port --DataDirectory $BASEDIR/var/tor$i
+    tor --RunAsDaemon 1  --PidFile $BASEDIR/var/tor$i/tor$i.pid --SocksPort $socks_port --DataDirectory $BASEDIR/var/tor$i
  
-    echo    "Running: ./delegate/src/delegated -P$http_port SERVER=http SOCKS=localhost:$socks_port"
- 
-    $DELEGATED -P$http_port CONNECT=s SERVER=http SOCKS=localhost:$socks_port RELAY=vhost
 done
  
 haproxy -f $BASEDIR/etc/rotating-tor-proxies.cfg
