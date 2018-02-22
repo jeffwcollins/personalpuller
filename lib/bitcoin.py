@@ -2,7 +2,7 @@ from Crypto.Hash import SHA256
 import re
 import math
 
-REGEX     = re.compile('\b[13][a-zA-Z1-9]{26,34}\b')
+REGEX     = re.compile(r'\b[13][a-zA-Z1-9]{26,34}\b')
 REGEX_ALL = re.compile('^[13][a-zA-Z1-9]{26,34}$')
 
 __b58chars = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
