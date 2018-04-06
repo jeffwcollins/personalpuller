@@ -85,7 +85,7 @@
 	</table>
 {% endmacro %}
 
-{% macro domain_fulltext_table(results, sortable=False, context=None) %}
+{% macro domain_fulltext_table(domains, results, sortable=False, context=None) %}
 	<table class="domain_list">
 		<thead>
 		{% if not sortable %}
@@ -109,6 +109,38 @@
 		{% endif %}
 		</thead>
 		<tbody>
+{% for domain in domains %}
+			<tr class="{{domain.status()}}">
+			    <td class="info_link">
+			    	<a class="info_link" href="{{url_for('onion_info',onion=domain.host)}}">(i)</a>
+			    </td>
+				<td class="domain">
+					<a href="{{domain.index_url()}}">{{domain.host}}</a>
+				</td>
+				<td class="title">
+					{{domain.title}}
+				    {% if domain.is_genuine %}
+				    <span class="tag genuine">[G]</span>
+				    {% endif %}
+				    {% if domain.is_fake %}
+				    <span class="tag fake">[F]</span>
+				    {% endif %}
+				    {% if extra %}
+				    {{extra(domain, extra_args)}}
+				    {% endif %}
+
+				</td>
+				<td class="created_at ago">
+					{{Domain.time_ago(domain.created_at)}}
+				</td>
+				<td class="visited_at ago">
+					{{Domain.time_ago(domain.visited_at)}}
+				</td>
+				<td class="last_seen {{'never ' if Domain.time_ago(domain.last_alive)=='Never' else ''}}ago">
+					{{Domain.time_ago(domain.last_alive)}}
+				</td>
+			</tr>
+{% endfor %}
 {% for hit in results.hits %}
 {% set domain = Domain.get(id=hit.domain_id) %}
 			<tr class="{{domain.status()}}">
