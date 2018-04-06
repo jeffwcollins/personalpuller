@@ -1,27 +1,27 @@
 # Fresh Onions TOR Hidden Service Crawler
 
-This is a copy of the source for the http://zlal32teyptf4tvi.onion hidden service, which implements a tor hidden service crawler / spider and web site.
+This is a copy of the source for the http://zlal32teyptf4tvi.onion hidden service, which implements a tor hidden service crawler/spider and website.
 
 ## Features
 
 * Crawls the darknet looking for new hidden service
-* Find hidden services from a number of clearnet sources
-* Optional fulltext elasticsearch support
-* Marks clone sites of the /r/darknet superlist
+* Find hidden services from a number of clear net sources
+* Optional full-text Elasticsearch support
+* Marks clone sites of the /r/darknet super list
 * Finds SSH fingerprints across hidden services
 * Finds email addresses across hidden  services
 * Finds bitcoin addresses across hidden services
 * Shows incoming / outgoing links to onion domains
-* Up-to-date alive / dead hidden service status
+* Up-to-date alive/dead hidden service status
 * Portscanner
 * Search for "interesting" URL paths, useful 404 detection
 * Automatic language detection
-* Fuzzy clone detection (requires elasticsearch, more advanced than superlist clone detection)
+* Fuzzy clone detection (requires Elasticsearch, more advanced than super list clone detection)
 * Doesn't fuck around in general.
 
 ## Licence
 
-This software is made available under the GNU Affero GPL 3 License.. What this means is that is you deploy this software as part of networked software that is available to the public, you must make the source code available (and any modifications).
+This software is made available under the GNU Affero GPL 3 License. What this means is that is you deploy this software as part of the networked software that is available to the public, you must make the source code available (and any modifications).
 
 From the GNU site:
 
@@ -33,28 +33,28 @@ From the GNU site:
 * tor
 
 ## Warning
-The version of elasticsearch need to be less than 6.x. I think the maximum is 5.6.6 in 5.x version. If you go higher of 5.x you will have problems. Also, if you decide to install kibana or any extra functionality link to elasticsearch, install it with the same version, because it's really capricious.  
+The version of Elasticsearch needs to be less than 6.x. The maximum is 5.6.6 in the 5.x version. If you go higher of 5.x you will have problems. Also, if you decide to install Kibana or any extra functionalities link to Elasticsearch, install them with the same version because will not work.
 
-Do not start too many instances of scraper/crawler, because with only 4 instances of tor proxy, it will be hard to connect to the onion site and the crawler will think that the site is down so you will have wrong data in your DB/Elasticsearch. Also, if you start too many instances or tor proxy you can be blocked.
+Do not start too many instances of scraper/crawler because, with only 4 instances of tor proxy, it will be hard to connect to the onion site. If you create more than 3-4 instances, it could become really slow. In this situation,  the crawler will become so slow that they will not be able to crawl pages. So you will not progress with this method. Let the crawler run and you will create a bigger list of valid domains with information in it.
 
-The pastebin script works only if you are on the white list of pastebin. If you're not, you will need to read the scraping API to understand how to activate it : https://pastebin.com/api_scraping_faq
+The Pastebin script works only if you are on the whitelist of Pastebin. If you're not, you will need to read the scraping API to understand how to activate it: https://pastebin.com/api_scraping_faq
 
-After a boot, be sure that the link between Tor and Privoxy is working.
+After booting, be sure that the link between Tor and Privoxy are working. To test it, use these commands.
 
     curl --socks5-hostname 127.0.0.1:9050 http://http://workingOnionWebsite
     curl --proxy 127.0.0.1:3129 http://workingOnionWebsite
     
-If they don't work just fix the problem before crawling, because all your onion will become to a "dead" status 
+If it didn't work, fix the problem before crawling because all your onions will convert to a "dead" status. You can try to run the script:`start.sh` to reinitialize the links.
 
 ### Tor browser Linux (Complementary)
-To test website before crawling (install this to have an interface and to have a better visualisation) Important!! Tor browser need and interface... don't install this on a console
+To test websites before crawling (install this to have an interface and a better visualization) Important!! Tor browser needs an interface... Don't install this on a console.
 
 * download https://www.torproject.org/download/download-easy.html.en
-* extract the folder to your desktop.
-* edit tor-browser_en-US/start-tor-browser to be able to open it.
+* extract the folder on your desktop.
+* edit tor-browser_en-US/start-tor-browser .
 
 
-Change this
+Change this:
   
     if [ "`id -u`" -eq 0 ]; then
         complain "The Tor Browser Bundle should not be run as root.  Exiting."
@@ -62,7 +62,7 @@ Change this
     fi  
     
 
-To :
+To:
 
     if [ "`id -u`" -eq 1 ]; then
       complain "The Tor Browser Bundle should not be run as root.  Exiting."
@@ -72,8 +72,28 @@ To :
 * click on Tor Browser file and click on connect.
 
 ### Tor service
+To use the new version of tor, you should follow these steps: https://www.torproject.org/docs/debian.html.en
+By using the last version of tor, you will be able to crawler the new generation of onions (V3).
 
-    sudo apt-get install tor
+If you used a version older than 0.3.x, you can have a problem with the update to 0.3.x. I was missing two libraries: 
+ 
+ * libssl1.1
+ * libzstd1
+
+So, I installed them:
+
+        sudo apt-get install libzstd1
+To install libssl1.1, I used a Debian package: https://packages.ubuntu.com/bionic/libssl1.1
+
+        lynx  https://packages.ubuntu.com/bionic/libssl1.1
+Use the bottom arrow to go at the bottom of the page and select your "Architecture Package Size". When you had made your choice, click on the right arrow, it will redirect you to the download page. Now it's the same thing. Use the bottom arrow to go down and choose the one that you want. When you find the one, just click on the right arrow. At the bottom of your interface, you will see `D) Download or C) Cancel`. Press `D`. When you will see the text `Save to disk`, go on it. Press the right arrow and press on `Enter`. When it's done click on `q` and `y` to quit.
+
+        dpkg -i libssl1.1_1.1.0g-2ubuntu2_amd64.deb #the name of your debain package
+
+Finish the tor installation by looking to your version. If you have the last one (0.3.2 at the time that I wrote it).
+
+        tor --version
+
 
 ### Haproxy service
 
@@ -98,25 +118,25 @@ Go in your crawler/scraper folder and write.
 then activate it.
 
     . venv/bin/activate
-    # Run the next command when you're in your virtual envir, because if you aren't in it will install in your normal envir
+    # Run the next command when you're in your virtual environment because if you aren't, it will install in your normal environment
     pip install -r requirements.txt
 ### Install MariaDB
-*** Mysql have a problem with some synthax in the code so I recommand you to install Mariadb ***
+*** Mysql have a problem with some syntax in the code so I recommend you to install MariaDB ***
 
     sudo apt-get install mariadb-server
     sudo apt-get install mariadb-client
 
-Now we will connect to mariadb and create our database from schema.sql . We need to be in the folder to be able to see schema.sql, because we will need it later.
+Now we will connect to MariaDB and create our database from `schema.sql`. We need to be in the folder to be able to see `schema.sql` because we will need it later.
 
     mysql -u root
     CREATE DATABASE databaseName;
     use databaseName;
     source schema.sql
-To know if all works well you should have "Query OK" on each rows. You should have 20 tables if you do this command:
+To know if all works well you should have "Query OK" on each row. You should have 20 tables if you do this command:
 
     show tables;
 
-Need a modification to be able to connect elasticsearh with our database.
+Need a modification to be able to connect Elasticsearh with our database.
 
     use mysql;
     update user set plugin='mysql_native_password' where User='root';
@@ -146,7 +166,7 @@ Edit `etc/proxy` for your TOR setup
     HIDDEN_SERVICE_PROXY_HOST=127.0.0.1
     HIDDEN_SERVICE_PROXY_PORT=9090
 
- Now we will go in privoxy config
+ Now we will go in Privoxy config
 
     cd /etc/privoxy/
     cp default.action default.action.orig
@@ -159,48 +179,31 @@ Edit `etc/proxy` for your TOR setup
     service tor start
     service privoxy start
     service haproxy start
+    service elasticsearch start
+    service mysql start
 
-Go in the scripts folder and run this command
+Go to the scripts folder and run this command
 
     ./create_privoxy_confs.sh
    
-Now it's time to try. Go in folder for the first time .../freshonions-torscraper/scripts/
+Now it's time to try. Go to the directory:  .../freshonions-torscraper/scripts/. This directory is relative, you could have changed the name of the directory.
 
     ./start.sh
     
-If you get something likes to privoxy localhost port forwarding don't continue, it will not work.
+Now you can test if it works with the new generation of onions (V3) (test all ports 9051, 9052, 90... and 3129, 3130, 31...)
 
-    . push.sh someoniondirectory.onion
+    curl --socks5-hostname 127.0.0.1:9051 http://jamie3vkiwibfiwucd6vxijskbhpjdyajmzeor4mc4i7yopvpo4p7cyd.onion/
+    curl --proxy 127.0.0.1:3129 http://jamie3vkiwibfiwucd6vxijskbhpjdyajmzeor4mc4i7yopvpo4p7cyd.onion/
 
-If you have errors, that are link to a missing module, do one of theses commands write the one that is link to your error(s).
+If you get something likes to Privoxy localhost port forwarding don't continue, it will not work.
 
-    pip install scrapy
-    pip install flask
-    pip install app
-    pip install timeout_decorator
-    pip install python-dateutil
-    pip install pretty
-    pip install pymysql
-    pip installcrypto
-    pip install SHA256
-    pip install pycountry
-    pip install langdetect
-    pip install python-memcached
-    pip install pycrypto
-    pip install twisted
-    pip install txsocksx
-    pip install tabulate
-    pip install gensim
-    pip install sklearn
-    pip install networkx
-    pip install paramiko
-    pip install 'PyPyDispatcher>=2.1.0'
+    ./push.sh someoniondirectory.onion
 
 To start the flask server to see our web interface.
 
     ./scripts/web.sh
 
-Set up the port forwarding from server to browser do this command on your computer to access server
+To set up the port forwarding from your server to your browser, do this command on your computer to access server
 
     ssh -L 5000:localhost:5000 username@IpAddressOfServer
 
@@ -211,67 +214,75 @@ To try if it works well for now.
     
 Run:
 
-    script/harvest.sh # to get onions (just detect the onions, dont go deep to find bitcoin address, emails, etc.)
-    init/scraper_service.sh # to start crawling (will get bitcoin address, emails, etc. if you already found onions with harvest.sh)
-    init/isup_service.sh # to keep site status up to date
+    script/harvest.sh  #To get onions (just detect the onions, don't go deeper to find bitcoin address, emails, etc.)
+    init/scraper_service.sh  #To start crawling (will get bitcoin address, emails, etc. if you already found onions with harvest.sh)
+    init/isup_service.sh  #To keep site status up to date
     
 ### Optional ElasticSearch Fulltext Search
 
-The torscraper comes with optional elasticsearch capability (enabled by default). Edit `etc/elasticsearch` and set vars or set `ELASTICSEARCH_ENABLED=false` to disable. 
+The Torscraper comes with optional Elasticsearch capability (enabled by default). Edit `etc/elasticsearch` and set vars or set `ELASTICSEARCH_ENABLED=false` to disable. 
 
 Run `scripts/elasticsearch_migrate.sh` to perform the initial setup after configuration.
 
-If elasticsearch is disabled there will be no fulltext search, however crawling and discovering new sites will still work.
+If Elasticsearch is disabled there will be no full-text search, however crawling and discovering new sites will still work.
 
 
 ### ElasticSearch
+You will need to install Elasticsearch(probably not only the pip package), this is the link to download the last version of 5.x. : https://www.elastic.co/downloads/past-releases/elasticsearch-5-6-6 . You can have problems with versions (like I said in the warning section). If you want to be sure you are using the right version, you can do this command :
+
+    curl -XGET 'http://localhost:9200'
+
 To enable Elasticsearch
 
     service elasticsearch start
-    ./elasticsearch_migrate.sh  #To perform the initial setup or if you want to reset elasticsearch, but we need it at the beginning to start it. 
+    ./elasticsearch_migrate.sh  #To perform the initial setup or if you want to reset Elasticsearch, but we need it at the beginning to start it. 
 
 After restart :
 
     . venv/bin/activate
-    ./script/start.sh #to start the instance of tor and privoxy
+    ./script/start.sh  #To start the instance of tor and privoxy
 
 ### FLASK :
-    . /home/fr../scripts/web.sh   #launch flask to have a web interface
+    ./scripts/web.sh  #Launch flask to have a web interface
 
 ### Cronjobs
 
-    # harvest onions from various sources
+    #Harvest onions from various sources
     1 18 * * * /home/freshonions-torscraper/scripts/harvest.sh
 
-    # get ssh fingerprints for new sites
+    #Get ssh fingerprints for new sites
     1 4,16 * * * /home/freshonions-torscraper/scripts/update_fingerprints.sh
 
-    # mark sites as genuine / fake from the /r/darknetmarkets superlist
+    #Mark sites as genuine / fake from the /r/darknetmarkets superlist
     1 1 * * 1 /home/freshonions-torscraper/scripts/get_valid.sh
 
-    # scrape pastebin for onions (needs paid account / IP whitelisting)
+    #Scrape pastebin for onions (needs paid account / IP whitelisting)
     */5 * * * * /home/freshonions-torscraper/scripts/pastebin.sh
 
-    # portscan new onions
+    #Portscan new onions
     1 13 * * * /home/freshonions-torscraper/scripts/portscan_up.sh
 
-    # scrape stronghold paste
+    #Scrape stronghold paste
     32 */2 * * * /home/freshonions-torscraper/scripts/stronghold_paste_rip.sh
 
-    # detect clones
+    #Detect clones
     20 14 * * * /home/freshonions-torscraper/scripts/detect_clones.sh
 
-    #keep a sql dump of data
+    #Keep a sql dump of data
     1 */1 * * * mysqldump -u username -ppassword --database tor --result-file=/home/dump.sql
     1 */8 * * * mysqldump -u username -ppassword --database tor --result-file=/home/dump_backup.sql
 
 
 ## Infrastructure
 
-Fresh Onions runs on two servers, a frontend host running the database and hidden service web site, and a backend host running the crawler. Probably most interesting to the reader is the setup for the backend. TOR as a client is COMPLETELY SINGLETHREADED. I know! It's 2017, and along with a complete lack of flying cars, TOR runs in a single thread. What this means is that if you try to run a crawler on a single TOR instance you will quickly find you are maxing out your CPU at 100%.
+Fresh Onions runs on two servers, a frontend host running the database and hidden service website, and a backend host running the crawler. Probably most interesting to the reader is the setup for the backend. T
+OR as a client is COMPLETELY SINGLETHREADED. I know! It's 2017, and along with a complete lack of flying cars, TOR runs in a single thread. What this means is that if you try to run a crawler on a single TOR instance you will quickly find you are maxing out your CPU at 100%.
 
 The solution to this problem is running multiple TOR instances and connecting to them through some kind of frontend that will round-robin your requests. The Fresh Onions crawler runs eight Tor instances.
 
-Debian (and ubuntu) comes with a useful program "tor-instance-create" for quickly creating multiple instances of TOR. I used Squid as my frontend proxy, but unfortunately it can't connect to SOCKS directly, so I used "privoxy" as an intermediate proxy. You will need one privoxy instance for every TOR instance. There is a script in "scripts/create_privoxy.sh" to help with creating privoxy instances on debian systems. It also helps to replace /etc/privoxy/default.filter with an empty file, to reduce CPU load by removing unnecessary regexes.
+Debian (and Ubuntu) comes with a useful program "tor-instance-create" for quickly creating multiple instances of TOR. I used Squid as my frontend proxy, but unfortunately, it can't connect to SOCKS directly, so I
+ used "Privoxy" as an intermediate proxy. You will need one Privoxy instance for every TOR instance. There is a script in "scripts/create_privoxy.sh" to help with creating Privoxy instances on Debian systems. It also helps to replace /etc/privoxy/default.filter with an empty file, to reduce CPU load by removing unnecessary regexes.
 
 Additionally, this resource https://www.howtoforge.com/ultimate-security-proxy-with-tor might be useful in setting up squid. If all you are doing is crawling and don't care about anonymity, I also recommend running TOR in tor2web mode (required recompilation) for increased speed
+
+
