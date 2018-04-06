@@ -3,16 +3,16 @@
 {% block body %}
 
 {{ ruler() }}
-
+<p> These sections have been changed by us. To access the original ones, visit:<a href="https://github.com/dirtyfilthy/freshonions-torscraper">https://github.com/dirtyfilthy/freshonions-torscraper</a>.</p>
 <div class="contents">
 
 <div class="FAQ">
 <div class="question">
-<h2>What do the colours of the onion links mean?</h2>
+<h2>The color of the onion links means what?</h2>
 </div>
 <div class="answer">
 <p>
-Green means the site is live. Orange means we've been having some trouble connecting to it recently, but it may still be fine. Red means we haven't been able to connect to it for over four hours, and the link is likely to be dead.
+Green means the site is live. Orange means we've been having some trouble connecting to it recently, but it may still be online. Red means we haven't been able to connect to it for over four hours, and the link is likely to be dead.
 </p>
 </div>
 </div>
@@ -23,18 +23,18 @@ Green means the site is live. Orange means we've been having some trouble connec
 </div>
 <div class="answer">
 <p>
-Sites that are up get checked every 1-3 hours. Sites that are dead get checked (60+rand(12:q0))*(1.5^dead_in_a_row) where "dead_in_a_row" is the number of times this site has been checked and been found dead in a row. If a site is found to be up this is reset to zero.
+Sites that are online are checked every 1-3 hours. Sites that are dead are checked (60+rand(12:q0))*(1.5^dead_in_a_row) where "dead_in_a_row" is the number of times the site has been checked and found dead in a row. If a site ends up live again, the value is reset to zero.
 </p>
 </div>
 </div>
 
 <div class="FAQ">
 <div class="question">
-<h2>Where do you get new onions from?</h2>
+<h2>Where new onion sites are taken from?</h2>
 </div>
 <div class="answer">
 <p>
-This site runs a tor web spider that is constantly crawling every link in the database 24/7. New links are added as they are discovered. I also scrape a number of clearnet sites such as:
+This site runs a tor web spider that is constantly crawling every link in the database 24/7. New links are added as they are discovered. We also scrape a number of clear net sites, such as:
 </p>
 <p>
 <ul>
@@ -47,62 +47,69 @@ This site runs a tor web spider that is constantly crawling every link in the da
 <li><a href="https://raw.githubusercontent.com/alecmuffett/onion-sites-that-dont-suck/master/README.md">https://raw.githubusercontent.com/alecmuffett/onion-sites-that-dont-suck/master/README.md</a></li>
 <li><a href="https://en.wikipedia.org/wiki/List_of_Tor_hidden_services">https://en.wikipedia.org/wiki/List_of_Tor_hidden_services</a></li>
 <li><a href="https://www.reddit.com/r/HiddenService/">https://www.reddit.com/r/HiddenService/</a></li>
+<li><a href="https://pastebin.com/r5rDVPQr">https://pastebin.com/r5rDVPQr</a>(Added)</li>
+<li><a href="https://danwin1210.me/onions.php?format=text">https://danwin1210.me/onions.php?format=text</a>(Added)</li>
+<li><a href="https://www.nextleveltricks.com/deep-web-darknet-websites-links">https://www.nextleveltricks.com/deep-web-darknet-websites-links</a>(Added)</li>
+<li><a href="http://www.thehackerstore.net/2015/07/huge-list-of-darknet-deep-web-hidden.html">http://www.thehackerstore.net/2015/07/huge-list-of-darknet-deep-web-hidden.html</a>(Added)</li>
+<li><a href="https://thehiddenwiki.org">https://thehiddenwiki.org</a>(Added)</li>
+<li><a href="https://torhiddenwiki.com">https://torhiddenwiki.com</a>(Added)</li>
+<li><a href="https://www.deepwebsiteslinks.com/deep-web-markets-links/">https://www.deepwebsiteslinks.com/deep-web-markets-links/</a>(Added)</li>
+<li><a href="https://www.quora.com/What-are-some-cool-dark-web-websites?share=1">https://www.quora.com/What-are-some-cool-dark-web-websites?share=1</a>(Added)</li>
+<li><a href="http://deepweblinks.org">http://deepweblinks.org</a>(Added)</li>
 </ul>
 </p>
-<p>I also have a pastebin scraper running 24/7 harvesting any .onion links</p>
+<p>We also have a Pastebin crawler and scraper running 24/7 harvesting .onion links.</p>
 </div>
 </div>
 
 <div class="FAQ">
 <div class="question">
-<h2>What do the [F] and [G] tags mean?</h2>
+<h2>What [F] and [G] tags mean?</h2>
 </div>
 <div class="answer">
 <p>
-Sites listed in the /r/darknetmarkets <a href="https://www.reddit.com/r/darknetmarkets/wiki/superlist">superlist</a>, or those that have been validated by myself are tagged as [G]enuine. Clones of these sites are tagged as [F]ake. Note that clone detection is pretty primitive.
-</p>
-</div>
-</div>
-
-<div class="FAQ">
-<div class="question">
-<h2>I searched for X, but it didn't show up, what gives?</h2>
-</div>
-<div class="answer">
-<p>
-Certain content relating to child pornography has been removed from this search engine. While I am very much anti-CP, I also doubt that removing links will actually stop any pedos in reality. That being said, while this is a hidden service, it is not being run as an illegal one, and my RL identiy is not very hard to find. Under Australian law, providing links to CP could be considered as "facilitating" its viewing and distribution. I'd rather not take that risk.
-</p>
-<p>
-Access to the full database is available to LE  and legitimate researchers (see below)
+Sites listed in the <a href="https://www.reddit.com/r/DNMSuperlist/wiki/superlist">super list</a> of darknet markets are tagged as [G]enuine. Clones of these sites are tagged as [F]ake. Note that clone detection is quite primitive.
 </p>
 </div>
 </div>
 
 <div class="FAQ">
 <div class="question">
-<h2>I'm LE / a legitimate researcher and would like a copy of your database</h2>
+<h2>A search on the term “X” didn’t show up in the results, why? </h2>
 </div>
 <div class="answer">
 <p>
-If you're LE and after child pornographers, then sure. 
+  Content related to child pornography is banned from this search engine. Banned onion links are those containing banned words in the header of the webpage. We are currently working on banning onion links with banned words in the page content as well, without blocking too many false positive (a website with the sentence: ‘no child pornography’ would also be banned).
 </p>
 <p>
-I'm also more than happy to share any data I have with legitimate researchers. By "legitimate researchers" I mean you will either be an academic, have presented at a infosec security conference, or be employed by a infosec company.
-</p>
-<p>
-Contact me at <a href="mailto://dirtyfilthee@gmail.com">dirtyfilthee@gmail.com</a> to request access.
+  Otherwise, if there is no result, it’s because there is no content in our database related to what you are searching for.
 </p>
 </div>
 </div>
 
 <div class="FAQ">
 <div class="question">
-<h2>I think I've found a bug / I have a feature request / I have a question</h2>
+<h2>Can I have access to the complete database? </h2>
 </div>
 <div class="answer">
-Sure thing! I run this site as a public service, and am reasonably friendly, so will try to help if I can. Hit me up on reddit, <a href="https://www.reddit.com/user/abruptdismissal/">abruptdismissal</a>.
+<p>
+  Access to the full database is available to law enforcement officials and legitimate researchers. A legitimate researcher is either an academic, an individual who has presented at an infosec security conference, or someone employed by an infosec company.
+</p>
+<p>
+Contact us at <a href="mailto://research@gosecure.ca">research@gosecure.ca</a> to request access.
+</p>
+</div>
+</div>
+
+<div class="FAQ">
+<div class="question">
+<h2>You have found a bug, you have a feature request or you have a question? </h2>
+</div>
+<div class="answer">
+We will certainly try to help you if we can. You can contact us at: <a href="mailto://research@gosecure.ca">research@gosecure.ca</a>.
 </div>
 </div>
 
 </div>
 {% endblock %}
+

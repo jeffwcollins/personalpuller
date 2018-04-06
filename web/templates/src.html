@@ -14,14 +14,12 @@
 	</p>
 	<h2>Download</h2>
 	<p>
-	The source code for this site, and the associated onion crawler, can be downloaded from here: <a href="{{source_link}}">{{source_name}}</a>. The source code is also available on github at <a href="https://github.com/dirtyfilthy/freshonions-torscraper">https://github.com/dirtyfilthy/freshonions-torscraper</a>
-	</p>
-	<p>
-	Please note that this source code is made available "as-is where-is", as they used to say in my local buy/sell/trade broadsheet. It has not been created with the intention of being easy to install for another person, and is mainly provided as a reference and in the hope that some components, such as the onion crawler, may be useful for your project. Python is not my native language, so be warned, you may see some very ugly constructions.
+	The source code is available on GitHub:<a href="https://github.com/GoSecure/freshonions-torscraper">https://github.com/GoSecure/freshonions-torscraper</a>. The integrity of the project can be cloned from here: <a href="https://github.com/GoSecure/freshonions-torscraper.git">https://github.com/GoSecure/freshonions-torscraper.git</a>. We decided to fork this project to add functionalities and fix bugs. This is the original link to the project: <a href="https://github.com/dirtyfilthy/freshonions-torscraper">https://github.com/dirtyfilthy/freshonions-torscraper</a>
 	</p>
 	<h2>Infrastructure</h2>
-	<p>
-	Fresh Onions runs on two servers, a frontend host running the database and hidden service web site, and a backend host running the crawler. Probably most interesting to the reader is the setup for the backend. TOR as a client is COMPLETELY SINGLETHREADED. I know! It's 2017, and along with a complete lack of flying cars, TOR runs in a single thread. What this means is that if you try to run a crawler on a single TOR instance you will quickly find you are maxing out your CPU at 100%. 
+	<p>(This came from the original project:<a href="https://github.com/dirtyfilthy/freshonions-torscraper">https://github.com/dirtyfilthy/freshonions-torscraper</a>)
+	<br><br>
+	Fresh Onions runs on two servers, a frontend host running the database and hidden service web site, and a backend host running the crawler. Probably most interesting to the reader is the setup for the backend. TOR as a client is COMPLETELY SINGLETHREADED. I know! It's 2017, and along with a complete lack of flying cars, TOR runs in a single thread. What this means is that if you try to run a crawler on a single TOR instance you will quickly find you are maxing out your CPU at 100%.
 	</p>
 	<p>
 	The solution to this problem is running multiple TOR instances and connecting to them through some kind of frontend that will round-robin your requests. The Fresh Onions crawler runs eight Tor instances.
@@ -34,3 +32,4 @@
 	</p>
 </div>
 {% endblock %}
+

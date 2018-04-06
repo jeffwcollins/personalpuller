@@ -125,7 +125,7 @@ def inject_counts():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('error.html',code=404,message="Page not found."), 404
+    return render_template('error.html',code=404,message="Page not found.")
 
 @cached(timeout=HOUR_SEC, render_layout=False)
 @app.route('/json/all')
@@ -214,7 +214,7 @@ def onion_info(onion):
 		links_from = domain.links_from()
 		return render_template('onion_info.html', domain=domain, language=language, scanner=portscanner, OpenPort=OpenPort, paths=paths, emails=emails, bitcoin_addresses=bitcoin_addresses, links_to=links_to, links_from = links_from, fp_count=fp_count)
 	else:
-		return render_template('error.html', code=404, message="Onion not found."), 404
+		return render_template('error.html', code=404, message="Onion not found.")
 
 
 @app.route('/onion/<onion>/json')
@@ -232,7 +232,7 @@ def onion_info_json(onion):
 def clones_list(onion):
 	domain = select(d for d in Domain if d.host==onion).first()
 	if not domain:
-		return render_template('error.html', code=404, message="Onion not found."), 404
+		return render_template('error.html', code=404, message="Onion not found.")
 	domains = Domain.hide_banned(domain.clones())
 	return render_template('clones_list.html', onion=onion, domains=domains) 
 
@@ -242,7 +242,7 @@ def clones_list(onion):
 def clones_list_json(onion):
 	domain = select(d for d in Domain if d.host==onion).first()
 	if not domain:
-		return render_template('error.html', code=404, message="Onion not found."), 404
+		return render_template('error.html', code=404, message="Onion not found.")
 	domains = Domain.hide_banned(domain.clones())
 	return jsonify(Domain.to_dict_list(domains))
 
@@ -298,7 +298,7 @@ def language_list(code):
 		language = detect_language.code_to_lang(code)
 		return render_template('language_list.html', domains=domains, code=code, language=language)
 	else:
-		return render_template('error.html', code=404, message="No domains with language '%s'." % code), 404
+		return render_template('error.html', code=404, message="No domains with language '%s'." % code)
 
 @app.route('/language/<code>/json')
 @cached(timeout=HOUR_SEC, render_layout=False)
@@ -308,7 +308,7 @@ def language_list_json(code):
 	if len(domains) != 0:
 		return jsonify(Domain.to_dict_list(domains))
 	else:
-		return render_template('error.html', code=404, message="No domains with language '%s'." % code), 404
+		return render_template('error.html', code=404, message="No domains with language '%s'." % code)
 
 @app.route('/path/<path:path>')
 @cached(timeout=HOUR_SEC)
@@ -319,7 +319,7 @@ def path_list(path):
 	if len(domains) != 0:
 		return render_template('path_list.html', domains=domains, path=path)
 	else:
-		return render_template('error.html', code=404, message="Path '%s' not found." % path), 404
+		return render_template('error.html', code=404, message="Path '%s' not found." % path)
 
 @app.route('/path_json/<path:path>')
 @cached(timeout=HOUR_SEC, render_layout=False)
@@ -330,7 +330,7 @@ def path_list_json(path):
 	if len(domains) != 0:
 		return jsonify(Domain.to_dict_list(domains))
 	else:
-		return render_template('error.html', code=404, message="Path '%s' not found." % path), 404
+		return render_template('error.html', code=404, message="Path '%s' not found." % path)
 
 
 @app.route('/ssh/<id>')
@@ -343,7 +343,7 @@ def ssh_list(id):
 		fingerprint = fp.fingerprint
 		return render_template('ssh_list.html', id=id, domains=domains, fingerprint=fingerprint)
 	else:
-		return render_template('error.html', code=404, message="Fingerprint not found."), 404
+		return render_template('error.html', code=404, message="Fingerprint not found.")
 
 @app.route('/ssh/<id>/json')
 @cached(timeout=HOUR_SEC, render_layout=False)
@@ -354,7 +354,7 @@ def ssh_list_json(id):
 		domains = Domain.hide_banned(fp.domains)
 		return jsonify(Domain.to_dict_list(domains))
 	else:
-		return render_template('error.html', code=404, message="Fingerprint not found."), 404
+		return render_template('error.html', code=404, message="Fingerprint not found.")
 
 @app.route('/email/<addr>')
 @cached(timeout=HOUR_SEC)
@@ -365,7 +365,7 @@ def email_list(addr):
 		domains = Domain.hide_banned(email.domains())
 		return render_template('email_list.html', domains=domains, email=addr)
 	else:
-		return render_template('error.html', code=404, message="Email not found."), 404
+		return render_template('error.html', code=404, message="Email not found.")
 
 @app.route('/email/<addr>/json')
 @cached(timeout=HOUR_SEC, render_layout=False)
@@ -376,7 +376,7 @@ def email_list_json(addr):
 		domains = Domain.hide_banned(email.domains())
 		return jsonify(Domain.to_dict_list(domains))
 	else:
-		return render_template('error.html', code=404, message="Email not found."), 404
+		return render_template('error.html', code=404, message="Email not found.")
 
 @app.route('/port/<ports>')
 @cached(timeout=HOUR_SEC)
@@ -394,7 +394,7 @@ def port_list(ports):
 	if len(domains) > 0:
 		return render_template('port_list.html', domains=domains, ports=ports, port_list_str = port_list_str)
 	else:
-		return render_template('error.html', code=404, message="Email not found."), 404
+		return render_template('error.html', code=404, message="Email not found.")
 
 @app.route('/port/<ports>/json')
 @cached(timeout=HOUR_SEC, render_layout=False)
@@ -411,7 +411,7 @@ def port_list_json(ports):
 	if len(domains) > 0:
 		return jsonify(Domain.to_dict_list(domains))
 	else:
-		return render_template('error.html', code=404, message="Email not found."), 404
+		return render_template('error.html', code=404, message="Email not found.")
 
 @app.route('/bitcoin/<addr>')
 @cached(timeout=HOUR_SEC)
@@ -422,7 +422,7 @@ def bitcoin_list(addr):
 		domains = Domain.hide_banned(btc_addr.domains())
 		return render_template('bitcoin_list.html', domains=domains, addr=addr)
 	else:
-		return render_template('error.html', code=404, message="Email not found."), 404
+		return render_template('error.html', code=404, message="Email not found.")
 
 
 @app.route('/bitcoin/<addr>/json')
@@ -434,7 +434,7 @@ def bitcoin_list_json(addr):
 		domains = Domain.hide_banned(btc_addr.domains())
 		return jsonify(Domain.to_dict_list(domains))
 	else:
-		return render_template('error.html', code=404, message="Email not found."), 404
+		return render_template('error.html', code=404, message="Email not found.")
 
 @app.route('/favicon.ico')
 def favicon():
@@ -457,7 +457,7 @@ def bot(kind):
 	if hb is None:
 		hb=HeadlessBot(uuid=session["uuid"], kind=kind, created_at=now)
 		commit()
-	return render_template('error.html', code=404, message="Printer on fire."), 404
+	return render_template('error.html', code=404, message="Printer on fire.")
 
 @app.route('/stats')
 @cached(timeout=600)
