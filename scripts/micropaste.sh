@@ -4,16 +4,16 @@ DIR=$( cd "$(dirname "$0")" ; pwd -P )
 . $DIR/env.sh
 rm $LIST $LIST2 $LIST3 $LIST4 $LIST5
 LIST=`mktemp`
-#LIST2=`mktemp`
-#LIST3=`mktemp`
+LIST2=`mktemp`
+LIST3=`mktemp`
 LIST4=`mktemp`
 LIST5=`mktemp`
 
 for i in {0..100..1}; do http_proxy="" https_proxy="" wget --no-check-certificate -O - https://micropaste.com/lists/$i -O - | grep -o -P "micropaste.com/view/.{0,8}"; done | awk -F'/' '{print $3}' >> $LIST
-LIST2=$(while read p; do echo https://micropaste.com/view/raw/$p; done < $LIST)
+while read p; do echo "https://micropaste.com/view/raw/$p"; done < $LIST | >> $LIST2
 #echo $LIST2 > $BASEDIR/"MICROPASTESITES$(date +"%FT%H%M%").txt"
 #$SCRIPTDIR/push_list
-LIST3=$(while read p; do wget --no-check-certificate -O $p -O -; done < $LIST2)
+while read p; do http_proxy="" https_proxy="" wget --no-check-certificate -O - $p; done < $LIST2 | >> $LIST3
 $SCRIPTDIR/purify.sh $LIST3 > $LIST4
 NUMBER=`wc -l $LIST4 | tr -s ' ' | cut -f 1 -d ' '`
 echo "Harvested $NUMBER onion links..."
