@@ -65,7 +65,7 @@ $SCRIPTDIR/extract_from_url.sh 'https://www.deepwebsiteslinks.com/deep-web-hosti
 $SCRIPTDIR/extract_from_url.sh 'https://www.deepwebsiteslinks.com/deep-web-markets-links/' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://www.reddit.com/r/onions/comments/2epckb/new_huge_onion_link_list/' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://onion.cab/list.php?a=list' >> $LIST
-$SCRIPTDIR/extract_from_url.sh 'https://www.reddit.com/r/onions/search?q=url%3A.onion&sort=new&restrict_sr=on' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.reddit.com/r/onions/search?q=url%3A.onion&sort=new&restrict_sr=off' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://ahmia.fi/address/' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://www.deepdotweb.com/2013/10/28/updated-llist-of-hidden-marketplaces-tor-i2p/' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://darkwebnews.com/deep-web-links/' >> $LIST

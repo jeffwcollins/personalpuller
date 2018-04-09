@@ -32,4 +32,4 @@ do
  
 done
  
-haproxy -f $BASEDIR/etc/rotating-tor-proxies.cfg
+haproxy -f $BASEDIR/etc/haproxy.cfg

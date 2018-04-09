@@ -26,4 +26,4 @@ SHA256
 gensim
 sklearn
 paramiko
-'PyPyDispatcher>=2.1.0'
+PyPyDispatcher>=2.1.0

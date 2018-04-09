@@ -1,4 +1,4 @@
-DB_HOST=groan
-DB_USER=root
-DB_PASS=fuck
+DB_HOST=localhost
+DB_USER=jeff
+DB_PASS=kitty121
 DB_BASE=tor

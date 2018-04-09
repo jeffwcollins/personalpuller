@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 5.7.18, for Linux (x86_64)
+-- MySQL dump 10.15  Distrib 10.0.34-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: groan    Database: tor
+-- Host: localhost    Database: tor
 -- ------------------------------------------------------
--- Server version	5.7.18-0ubuntu0.16.04.1
+-- Server version	10.0.34-MariaDB-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -27,7 +27,7 @@ CREATE TABLE `bitcoin_address` (
   `address` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `address` (`address`)
-) ENGINE=InnoDB AUTO_INCREMENT=53732 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2371 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,7 +61,7 @@ CREATE TABLE `category` (
   `is_auto` tinyint(1) DEFAULT '1',
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +100,7 @@ CREATE TABLE `categorylink` (
   KEY `idx_categorylink__domain` (`domain`),
   CONSTRAINT `fk_categorylink__category` FOREIGN KEY (`category`) REFERENCES `category` (`id`),
   CONSTRAINT `fk_categorylink__domain` FOREIGN KEY (`domain`) REFERENCES `domain` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,7 +113,7 @@ DROP TABLE IF EXISTS `clone_group`;
 CREATE TABLE `clone_group` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31365 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,7 +138,7 @@ CREATE TABLE `daily_stat` (
   `banned_up_last_24` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `idx_daily_stat_created_at` (`created_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,7 +194,7 @@ CREATE TABLE `domain` (
   CONSTRAINT `fk_domain__clone_group` FOREIGN KEY (`clone_group`) REFERENCES `clone_group` (`id`),
   CONSTRAINT `fk_domain__new_clone_group` FOREIGN KEY (`new_clone_group`) REFERENCES `clone_group` (`id`),
   CONSTRAINT `fk_domain__ssh_fingerprint` FOREIGN KEY (`ssh_fingerprint`) REFERENCES `ssh_fingerprint` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=304845 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10989 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,7 +209,7 @@ CREATE TABLE `email` (
   `address` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `address` (`address`)
-) ENGINE=InnoDB AUTO_INCREMENT=115630 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1567 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -276,7 +276,7 @@ CREATE TABLE `open_port` (
   PRIMARY KEY (`id`),
   KEY `idx_open_port__domain` (`domain`),
   CONSTRAINT `fk_open_port__domain` FOREIGN KEY (`domain`) REFERENCES `domain` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33743 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -303,7 +303,7 @@ CREATE TABLE `page` (
   KEY `page_path_idx` (`path`(255)),
   KEY `idx_path_code` (`code`,`path`(255)),
   CONSTRAINT `fk_page__domain` FOREIGN KEY (`domain`) REFERENCES `domain` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14817765 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=93410 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -341,7 +341,7 @@ CREATE TABLE `request_log` (
   `referrer` varchar(1024) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_reqlog_created_at` (`created_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=8164588 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8164671 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -367,7 +367,7 @@ CREATE TABLE `search_log` (
   KEY `idx_searchlog_created_at` (`created_at`),
   KEY `idx_search_log__request_log` (`request_log`),
   CONSTRAINT `fk_search_log__request_log` FOREIGN KEY (`request_log`) REFERENCES `request_log` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=797289 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=797336 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -382,7 +382,7 @@ CREATE TABLE `ssh_fingerprint` (
   `fingerprint` varchar(450) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `fingerprint` (`fingerprint`)
-) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -402,11 +402,11 @@ CREATE TABLE `web_component` (
   KEY `idx_web_component_name` (`name`),
   KEY `idx_web_component_version` (`version`),
   KEY `idx_web_component_account` (`account`),
-  KEY `idx_web_component_string` (`string`),
+  KEY `idx_web_component_string` (`string`(255)),
   KEY `idx_web_component_name_version` (`name`,`version`),
   KEY `idx_web_component_name_account` (`name`,`account`),
-  KEY `idx_web_component_name_string` (`name`,`string`)
-) ENGINE=InnoDB AUTO_INCREMENT=1395 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `idx_web_component_name_string` (`name`,`string`(255))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -437,4 +437,4 @@ CREATE TABLE `web_component_link` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-05 12:26:13
+-- Dump completed on 2018-03-15  7:37:11
