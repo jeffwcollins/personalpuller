@@ -78,6 +78,27 @@ $SCRIPTDIR/tor_extract_from_url.sh 'http://visitorfi5kl7q7i.onion/onions/' >> $L
 $SCRIPTDIR/tor_extract_from_url.sh 'http://underdj5ziov3ic7.onion/crawler/index.php?online=1' >> $LIST
 $SCRIPTDIR/tor_extract_from_url.sh 'http://7cbqhjnlkivmigxf.onion/' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://www.reddit.com/r/HiddenService/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/2/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/3/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/4/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/5/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/6/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/7/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/8/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/9/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/10/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/11/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/12/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/13/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/14/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/15/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/16/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/17/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/18/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/19/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/20/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.deepwebsiteslinks.com/deep-web-links/' >> $LIST
 $SCRIPTDIR/purify.sh $LIST > $LIST2
 NUMBER=`wc -l $LIST2 | tr -s ' ' | cut -f 1 -d ' '`
 echo "Harvested $NUMBER onion links..."
