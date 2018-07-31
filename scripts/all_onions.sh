@@ -8,7 +8,7 @@ LIST3=`mktemp`
 LIST4=`mktemp`
 LIST5=`mktemp`
 
-for i in {0..100..1}; do http_proxy="" https_proxy="" wget --no-check-certificate --tries=1 -O - https://web.archive.org/web/20170711212802/https://onions.system33.pw/?page=$i -O - | grep -E -o '[0-9a-zA_Z]+\.onion' >> $LIST
+for i in {0..100..1}; do http_proxy="" https_proxy="" wget --no-check-certificate --tries=1 -O - https://web.archive.org/web/20170711212802/https://onions.system33.pw/?page=$i -O - | grep -E -o '[0-9a-zA_Z]+\.onion' >> $LIST; done
 $SCRIPTDIR/purify.sh $LIST > $LIST2
 NUMBER=`wc -l $LIST2 | tr -s ' ' | cut -f 1 -d ' '`
 echo "Harvested $NUMBER onion links..."
