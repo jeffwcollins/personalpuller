@@ -9,7 +9,6 @@ $SCRIPTDIR/tor_extract_from_url.sh "http://jld3zkuo4b5mbios.onion/?page=$i" >> $
 $SCRIPTDIR/purify.sh $LIST >> $LIST2
 NUMBER=`wc -l $LIST2 | tr -s ' ' | cut -f 1 -d ' '`
 echo "Harvested $NUMBER onion links..."
-wait 30s
 $SCRIPTDIR/push_list.sh $LIST2
 rm $LIST $LIST2
 done
