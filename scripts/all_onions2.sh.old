@@ -1,0 +1,10 @@
+#!/bin/sh
+DIR=$( cd "$(dirname "$0")" ; pwd -P )
+. $DIR/env.sh
+
+cat domainlist | while read p; do
+  http_proxy="" https_proxy="" wget --no-check-certificate -O - $p | grep -E -o '[0-9a-zA_Z]+\.onion' >> domainlist2;
+done
+#
+#9444732965739290427392
+#
