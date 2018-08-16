@@ -14,10 +14,4 @@ echo "Harvested $NUMBER onion links..."
 sleep 1m
 $SCRIPTDIR/push_list.sh $LIST2
 rm $LIST $LIST2
-#(
-#cd $BASEDIR
-#scrapy crawl tor -a load_links=$LIST2 -a test=yes
-#)
-#
-#9444732965739290427392
 #
