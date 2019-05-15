@@ -5,8 +5,8 @@ LIST=`mktemp`
 LIST2=`mktemp`
 #LIST6=`mktemp`
 #
-for i in $(seq 1 1000); do
-  $SCRIPTDIR/tor_extract_from_url.sh "http://jld3zkuo4b5mbios.onion/?page=$i" >> $LIST
+for i in $(seq 101 808); do
+  $SCRIPTDIR/tor_extract_from_url.sh "http://underdj5ziov3ic7.onion/crawler/index.php?pg=$i" >> $LIST
 done
 $SCRIPTDIR/purify.sh $LIST >> $LIST2
 NUMBER=`wc -l $LIST2 | tr -s ' ' | cut -f 1 -d ' '`

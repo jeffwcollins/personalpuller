@@ -36,7 +36,7 @@ class Domain(db.Entity):
     useful_404     = Required(bool, default=False)
     useful_404_php = Required(bool, default=False)
     useful_404_dir = Required(bool, default=False)
-    ban_exempt     = Required(bool, default=True)
+    ban_exempt     = Required(bool, default=False)
     language       = Optional(str, 2)
     created_at     = Required(datetime)
     visited_at     = Required(datetime)

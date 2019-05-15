@@ -24,7 +24,7 @@
 </head>
 <body>
 	<div id="logo">
-	<a href="{{ url_for('index') }}"><img src="/static/GoSecureFreshOnions.png" /></a> 
+	<a href="{{ url_for('index') }}"><img src="/static/logo.png" /></a>
 	{% if uuid_is_fresh %}
 	<a class="black" href="{{url_for('bot', kind=uuid)}}">.</a>
 	{% endif %}

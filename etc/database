@@ -1,4 +1,4 @@
-DB_HOST=localhost
-DB_USER=jeff
+DB_HOST=mariadb.bonezie.com
+DB_USER=tor-db
 DB_PASS=kitty121
 DB_BASE=tor

@@ -142,7 +142,7 @@ class DomainDocType(DocType):
 class PageDocType(DocType):
     html_strip = analyzer('html_strip', 
         tokenizer="standard",
-        filter=["standard", "lowercase", "pattern", "snowball", "asciifolding"],
+        filter=["standard", "lowercase", "stop", "snowball", "asciifolding"],
         char_filter=["html_strip"]
     )
 

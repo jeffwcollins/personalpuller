@@ -65,13 +65,14 @@ $SCRIPTDIR/extract_from_url.sh 'https://www.deepwebsiteslinks.com/deep-web-hosti
 $SCRIPTDIR/extract_from_url.sh 'https://www.deepwebsiteslinks.com/deep-web-markets-links/' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://www.reddit.com/r/onions/comments/2epckb/new_huge_onion_link_list/' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://onion.cab/list.php?a=list' >> $LIST
-$SCRIPTDIR/extract_from_url.sh 'https://www.reddit.com/r/onions/search?q=url%3A.onion&sort=new&restrict_sr=off' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.reddit.com/r/onions/search?q=url%3A.onion&sort=new' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://ahmia.fi/address/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://ahmia.fi/onions/' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://www.deepdotweb.com/2013/10/28/updated-llist-of-hidden-marketplaces-tor-i2p/' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://darkwebnews.com/deep-web-links/' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://raw.githubusercontent.com/alecmuffett/onion-sites-that-dont-suck/master/README.md' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://en.wikipedia.org/wiki/List_of_Tor_hidden_services' >> $LIST
-$SCRIPTDIR/extract_from_url.sh 'https://www.reddit.com/r/darknetmarkets/wiki/superlist.json' >> $LIST 
+$SCRIPTDIR/extract_from_url.sh 'https://www.reddit.com/r/darknetmarkets/wiki/superist.json' >> $LIST 
 $SCRIPTDIR/tor_extract_from_url.sh 'http://tt3j2x4k5ycaa5zt.onion/onions.php?format=text' >> $LIST
 $SCRIPTDIR/tor_extract_from_url.sh 'http://skunksworkedp2cg.onion/sites.html' >> $LIST
 $SCRIPTDIR/tor_extract_from_url.sh 'http://visitorfi5kl7q7i.onion/onions/' >> $LIST
@@ -99,6 +100,7 @@ $SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/18/' >> $LI
 $SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/19/' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://www.thedarkweblinks.com/page/20/' >> $LIST
 $SCRIPTDIR/extract_from_url.sh 'https://www.deepwebsiteslinks.com/deep-web-links/' >> $LIST
+$SCRIPTDIR/extract_from_url.sh 'https://www.onion.link/sitemap.xml/' >> $LIST
 $SCRIPTDIR/purify.sh $LIST > $LIST2
 NUMBER=`wc -l $LIST2 | tr -s ' ' | cut -f 1 -d ' '`
 echo "Harvested $NUMBER onion links..."

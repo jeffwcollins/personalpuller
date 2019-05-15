@@ -35,10 +35,16 @@ def render_elasticsearch(context, json=False):
 		domain_set_dict[hit.domain_id] = True
 	domain_set = domain_set_dict.keys()
 	domain_precache = select(d for d in Domain if d.id in domain_set)
+
+	search = context["search"].replace(" ","")
+	domains = select(d for d in Domain if search in d.host)
+	n_results += len(domains)
+	orig_count += len(domains)
+
 	if json:
 		return (json_elastic_search_results(results, context, orig_count), orig_count)
 	else:
-		return (render_template('index_fulltext.html', results=results, context=context, orig_count=orig_count, n_results=n_results, page=page, per_page=result_limit, sort=sort, is_more = is_more), orig_count)
+		return (render_template('index_fulltext.html', domains=domains, results=results, context=context, orig_count=orig_count, n_results=n_results, page=page, per_page=result_limit, sort=sort, is_more = is_more), orig_count)
 
 
 @db_session
@@ -67,7 +73,8 @@ def maybe_search_redirect(search):
 		search = parsedurl.hostname
 	if search != "":
 		if re.match('.*\.onion$', search):
-			return redirect(url_for("onion_info",onion=search), code=302)
+			search = search.replace(" ","")
+                        return redirect(url_for("onion_info",onion=search), code=302)
 		elif re.match(email_util.REGEX_ALL, search):
 			return redirect(url_for("email_list",addr=search), code=302)
 		elif bitcoin.is_valid(search):

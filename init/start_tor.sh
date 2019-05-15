@@ -32,4 +32,4 @@ do
  
 done
  
-haproxy -f $BASEDIR/etc/haproxy.cfg
+haproxy -f $BASEDIR/init/haproxy.cfg
